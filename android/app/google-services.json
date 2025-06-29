@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "706308419045",
+    "project_id": "book-a-doctor-88e92",
+    "storage_bucket": "book-a-doctor-88e92.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:706308419045:android:0b496f70be671268f5930c",
+        "android_client_info": {
+          "package_name": "com.example.book_a_doctor"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-7GHjTGa8whKi4lIRdpEp5JaGUI48VW0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
