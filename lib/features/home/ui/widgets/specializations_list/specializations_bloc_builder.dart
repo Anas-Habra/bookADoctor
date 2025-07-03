@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/helpers/spacing.dart';
-import '../../../../../core/networking/api_error_handler.dart';
+import '../../../../../core/networking/api_error_model.dart';
 import '../../../logic/home_cubit.dart';
 import '../../../logic/home_state.dart';
 
@@ -27,9 +27,8 @@ class SpecializationsBlocBuilder extends StatelessWidget {
             specializationDataList: final specializationDataList,
           ) =>
             setupSuccess(specializationDataList),
-          SpecializationsError(errorHandler: final errorHandler) => setupError(
-            errorHandler,
-          ),
+          SpecializationsError(apiErrorModel: final apiErrorModel) =>
+            setupError(apiErrorModel),
           _ => const SizedBox.shrink(),
         };
       },
@@ -55,7 +54,7 @@ class SpecializationsBlocBuilder extends StatelessWidget {
     );
   }
 
-  Widget setupError(ErrorHandler errorHandler) {
+  Widget setupError(ApiErrorModel apiErrorModel) {
     return const SizedBox.shrink();
   }
 }

@@ -77,8 +77,8 @@ String toString() {
 /// @nodoc
 
 
-class Loading<T> implements LoginState<T> {
-  const Loading();
+class LoginLoading<T> implements LoginState<T> {
+  const LoginLoading();
   
 
 
@@ -88,7 +88,7 @@ class Loading<T> implements LoginState<T> {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Loading<T>);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoginLoading<T>);
 }
 
 
@@ -97,7 +97,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'LoginState<$T>.loading()';
+  return 'LoginState<$T>.loginLoading()';
 }
 
 
@@ -109,8 +109,8 @@ String toString() {
 /// @nodoc
 
 
-class Success<T> implements LoginState<T> {
-  const Success(this.data);
+class LoginSuccess<T> implements LoginState<T> {
+  const LoginSuccess(this.data);
   
 
  final  T data;
@@ -119,13 +119,13 @@ class Success<T> implements LoginState<T> {
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$SuccessCopyWith<T, Success<T>> get copyWith => _$SuccessCopyWithImpl<T, Success<T>>(this, _$identity);
+$LoginSuccessCopyWith<T, LoginSuccess<T>> get copyWith => _$LoginSuccessCopyWithImpl<T, LoginSuccess<T>>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Success<T>&&const DeepCollectionEquality().equals(other.data, data));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoginSuccess<T>&&const DeepCollectionEquality().equals(other.data, data));
 }
 
 
@@ -134,15 +134,15 @@ int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(
 
 @override
 String toString() {
-  return 'LoginState<$T>.success(data: $data)';
+  return 'LoginState<$T>.loginSuccess(data: $data)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $SuccessCopyWith<T,$Res> implements $LoginStateCopyWith<T, $Res> {
-  factory $SuccessCopyWith(Success<T> value, $Res Function(Success<T>) _then) = _$SuccessCopyWithImpl;
+abstract mixin class $LoginSuccessCopyWith<T,$Res> implements $LoginStateCopyWith<T, $Res> {
+  factory $LoginSuccessCopyWith(LoginSuccess<T> value, $Res Function(LoginSuccess<T>) _then) = _$LoginSuccessCopyWithImpl;
 @useResult
 $Res call({
  T data
@@ -153,17 +153,17 @@ $Res call({
 
 }
 /// @nodoc
-class _$SuccessCopyWithImpl<T,$Res>
-    implements $SuccessCopyWith<T, $Res> {
-  _$SuccessCopyWithImpl(this._self, this._then);
+class _$LoginSuccessCopyWithImpl<T,$Res>
+    implements $LoginSuccessCopyWith<T, $Res> {
+  _$LoginSuccessCopyWithImpl(this._self, this._then);
 
-  final Success<T> _self;
-  final $Res Function(Success<T>) _then;
+  final LoginSuccess<T> _self;
+  final $Res Function(LoginSuccess<T>) _then;
 
 /// Create a copy of LoginState
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? data = freezed,}) {
-  return _then(Success<T>(
+  return _then(LoginSuccess<T>(
 freezed == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
 as T,
   ));
@@ -175,43 +175,43 @@ as T,
 /// @nodoc
 
 
-class Error<T> implements LoginState<T> {
-  const Error({required this.error});
+class LoginError<T> implements LoginState<T> {
+  const LoginError(this.apiErrorModel);
   
 
- final  String error;
+ final  ApiErrorModel apiErrorModel;
 
 /// Create a copy of LoginState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$ErrorCopyWith<T, Error<T>> get copyWith => _$ErrorCopyWithImpl<T, Error<T>>(this, _$identity);
+$LoginErrorCopyWith<T, LoginError<T>> get copyWith => _$LoginErrorCopyWithImpl<T, LoginError<T>>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Error<T>&&(identical(other.error, error) || other.error == error));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoginError<T>&&(identical(other.apiErrorModel, apiErrorModel) || other.apiErrorModel == apiErrorModel));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,error);
+int get hashCode => Object.hash(runtimeType,apiErrorModel);
 
 @override
 String toString() {
-  return 'LoginState<$T>.error(error: $error)';
+  return 'LoginState<$T>.loginError(apiErrorModel: $apiErrorModel)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $ErrorCopyWith<T,$Res> implements $LoginStateCopyWith<T, $Res> {
-  factory $ErrorCopyWith(Error<T> value, $Res Function(Error<T>) _then) = _$ErrorCopyWithImpl;
+abstract mixin class $LoginErrorCopyWith<T,$Res> implements $LoginStateCopyWith<T, $Res> {
+  factory $LoginErrorCopyWith(LoginError<T> value, $Res Function(LoginError<T>) _then) = _$LoginErrorCopyWithImpl;
 @useResult
 $Res call({
- String error
+ ApiErrorModel apiErrorModel
 });
 
 
@@ -219,19 +219,19 @@ $Res call({
 
 }
 /// @nodoc
-class _$ErrorCopyWithImpl<T,$Res>
-    implements $ErrorCopyWith<T, $Res> {
-  _$ErrorCopyWithImpl(this._self, this._then);
+class _$LoginErrorCopyWithImpl<T,$Res>
+    implements $LoginErrorCopyWith<T, $Res> {
+  _$LoginErrorCopyWithImpl(this._self, this._then);
 
-  final Error<T> _self;
-  final $Res Function(Error<T>) _then;
+  final LoginError<T> _self;
+  final $Res Function(LoginError<T>) _then;
 
 /// Create a copy of LoginState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? error = null,}) {
-  return _then(Error<T>(
-error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
-as String,
+@pragma('vm:prefer-inline') $Res call({Object? apiErrorModel = null,}) {
+  return _then(LoginError<T>(
+null == apiErrorModel ? _self.apiErrorModel : apiErrorModel // ignore: cast_nullable_to_non_nullable
+as ApiErrorModel,
   ));
 }
 

@@ -2,6 +2,7 @@ import 'package:book_a_doctor/core/helpers/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/networking/api_error_model.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/colors.dart';
 import '../../../../core/theming/styles.dart';
@@ -37,8 +38,8 @@ class SignupBlocListener extends StatelessWidget {
             context.pop();
             showSuccessDialog(context);
             break;
-          case SignupError(error: final error):
-            setupErrorState(context, error);
+          case SignupError(apiErrorModel: final apiErrorModel):
+            setupErrorState(context, apiErrorModel);
             break;
           default:
             break;
@@ -79,14 +80,17 @@ class SignupBlocListener extends StatelessWidget {
     );
   }
 
-  void setupErrorState(BuildContext context, String error) {
+  void setupErrorState(BuildContext context, ApiErrorModel apiErrorModel) {
     context.pop();
     showDialog(
       context: context,
       builder:
           (context) => AlertDialog(
             icon: const Icon(Icons.error, color: Colors.red, size: 32),
-            content: Text(error, style: TextStyles.font15DarkBlueMedium),
+            content: Text(
+              apiErrorModel.getAllErrorMessages(),
+              style: TextStyles.font15DarkBlueMedium,
+            ),
             actions: [
               TextButton(
                 onPressed: () {
