@@ -1,8 +1,8 @@
 import 'package:book_a_doctor/features/home/ui/widgets/doctors_blue_container.dart';
-import 'package:book_a_doctor/features/home/ui/widgets/doctors_list_view.dart';
-import 'package:book_a_doctor/features/home/ui/widgets/doctors_speciality_list_view.dart';
+import 'package:book_a_doctor/features/home/ui/widgets/doctors_list/doctors_bloc_builder.dart';
 import 'package:book_a_doctor/features/home/ui/widgets/doctors_speciality_see_all.dart';
 import 'package:book_a_doctor/features/home/ui/widgets/home_top_bar.dart';
+import 'package:book_a_doctor/features/home/ui/widgets/specializations_list/specializations_bloc_builder.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/helpers/spacing.dart';
@@ -21,14 +21,14 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              HomeTopBar(),
-              DoctorsBlueContainer(),
+              const HomeTopBar(),
+              const DoctorsBlueContainer(),
               verticalSpace(24),
               const DoctorsSpecialitySeeAll(),
               verticalSpace(18),
-              const DoctorsSpecialityListView(),
+              const SpecializationsBlocBuilder(),
               verticalSpace(8),
-              const DoctorsListView(),
+              const DoctorsBlocBuilder(),
             ],
           ),
         ),
