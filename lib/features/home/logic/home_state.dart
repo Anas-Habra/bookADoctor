@@ -1,3 +1,4 @@
+import 'package:book_a_doctor/core/networking/api_error_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../core/networking/api_error_handler.dart';
@@ -16,13 +17,12 @@ class HomeState with _$HomeState {
     List<SpecializationsData?>? specializationDataList,
   ) = SpecializationsSuccess;
 
-  const factory HomeState.specializationsError(ErrorHandler errorHandler) =
+  const factory HomeState.specializationsError(ApiErrorModel apiErrorModel) =
       SpecializationsError;
 
   // Doctors
   const factory HomeState.doctorsSuccess(List<Doctors?>? doctorsList) =
       DoctorsSuccess;
 
-  const factory HomeState.doctorsError(ErrorHandler errorHandler) =
-      DoctorsError;
+  const factory HomeState.doctorsError() = DoctorsError;
 }

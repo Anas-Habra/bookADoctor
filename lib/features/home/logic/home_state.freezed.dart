@@ -184,10 +184,10 @@ as List<SpecializationsData?>?,
 
 
 class SpecializationsError implements HomeState {
-  const SpecializationsError(this.errorHandler);
+  const SpecializationsError(this.apiErrorModel);
   
 
- final  ErrorHandler errorHandler;
+ final  ApiErrorModel apiErrorModel;
 
 /// Create a copy of HomeState
 /// with the given fields replaced by the non-null parameter values.
@@ -199,16 +199,16 @@ $SpecializationsErrorCopyWith<SpecializationsError> get copyWith => _$Specializa
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SpecializationsError&&(identical(other.errorHandler, errorHandler) || other.errorHandler == errorHandler));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SpecializationsError&&(identical(other.apiErrorModel, apiErrorModel) || other.apiErrorModel == apiErrorModel));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,errorHandler);
+int get hashCode => Object.hash(runtimeType,apiErrorModel);
 
 @override
 String toString() {
-  return 'HomeState.specializationsError(errorHandler: $errorHandler)';
+  return 'HomeState.specializationsError(apiErrorModel: $apiErrorModel)';
 }
 
 
@@ -219,7 +219,7 @@ abstract mixin class $SpecializationsErrorCopyWith<$Res> implements $HomeStateCo
   factory $SpecializationsErrorCopyWith(SpecializationsError value, $Res Function(SpecializationsError) _then) = _$SpecializationsErrorCopyWithImpl;
 @useResult
 $Res call({
- ErrorHandler errorHandler
+ ApiErrorModel apiErrorModel
 });
 
 
@@ -236,10 +236,10 @@ class _$SpecializationsErrorCopyWithImpl<$Res>
 
 /// Create a copy of HomeState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? errorHandler = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? apiErrorModel = null,}) {
   return _then(SpecializationsError(
-null == errorHandler ? _self.errorHandler : errorHandler // ignore: cast_nullable_to_non_nullable
-as ErrorHandler,
+null == apiErrorModel ? _self.apiErrorModel : apiErrorModel // ignore: cast_nullable_to_non_nullable
+as ApiErrorModel,
   ));
 }
 
@@ -324,66 +324,32 @@ as List<Doctors?>?,
 
 
 class DoctorsError implements HomeState {
-  const DoctorsError(this.errorHandler);
+  const DoctorsError();
   
 
- final  ErrorHandler errorHandler;
 
-/// Create a copy of HomeState
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$DoctorsErrorCopyWith<DoctorsError> get copyWith => _$DoctorsErrorCopyWithImpl<DoctorsError>(this, _$identity);
+
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is DoctorsError&&(identical(other.errorHandler, errorHandler) || other.errorHandler == errorHandler));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DoctorsError);
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,errorHandler);
+int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'HomeState.doctorsError(errorHandler: $errorHandler)';
+  return 'HomeState.doctorsError()';
 }
 
 
 }
 
-/// @nodoc
-abstract mixin class $DoctorsErrorCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
-  factory $DoctorsErrorCopyWith(DoctorsError value, $Res Function(DoctorsError) _then) = _$DoctorsErrorCopyWithImpl;
-@useResult
-$Res call({
- ErrorHandler errorHandler
-});
 
 
-
-
-}
-/// @nodoc
-class _$DoctorsErrorCopyWithImpl<$Res>
-    implements $DoctorsErrorCopyWith<$Res> {
-  _$DoctorsErrorCopyWithImpl(this._self, this._then);
-
-  final DoctorsError _self;
-  final $Res Function(DoctorsError) _then;
-
-/// Create a copy of HomeState
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? errorHandler = null,}) {
-  return _then(DoctorsError(
-null == errorHandler ? _self.errorHandler : errorHandler // ignore: cast_nullable_to_non_nullable
-as ErrorHandler,
-  ));
-}
-
-
-}
 
 // dart format on

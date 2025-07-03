@@ -176,10 +176,10 @@ as T,
 
 
 class SignupError<T> implements SignupState<T> {
-  const SignupError({required this.error});
+  const SignupError(this.apiErrorModel);
   
 
- final  String error;
+ final  ApiErrorModel apiErrorModel;
 
 /// Create a copy of SignupState
 /// with the given fields replaced by the non-null parameter values.
@@ -191,16 +191,16 @@ $SignupErrorCopyWith<T, SignupError<T>> get copyWith => _$SignupErrorCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SignupError<T>&&(identical(other.error, error) || other.error == error));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SignupError<T>&&(identical(other.apiErrorModel, apiErrorModel) || other.apiErrorModel == apiErrorModel));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,error);
+int get hashCode => Object.hash(runtimeType,apiErrorModel);
 
 @override
 String toString() {
-  return 'SignupState<$T>.signupError(error: $error)';
+  return 'SignupState<$T>.signupError(apiErrorModel: $apiErrorModel)';
 }
 
 
@@ -211,7 +211,7 @@ abstract mixin class $SignupErrorCopyWith<T,$Res> implements $SignupStateCopyWit
   factory $SignupErrorCopyWith(SignupError<T> value, $Res Function(SignupError<T>) _then) = _$SignupErrorCopyWithImpl;
 @useResult
 $Res call({
- String error
+ ApiErrorModel apiErrorModel
 });
 
 
@@ -228,10 +228,10 @@ class _$SignupErrorCopyWithImpl<T,$Res>
 
 /// Create a copy of SignupState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? error = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? apiErrorModel = null,}) {
   return _then(SignupError<T>(
-error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
-as String,
+null == apiErrorModel ? _self.apiErrorModel : apiErrorModel // ignore: cast_nullable_to_non_nullable
+as ApiErrorModel,
   ));
 }
 

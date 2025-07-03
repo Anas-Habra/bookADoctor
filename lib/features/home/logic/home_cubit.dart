@@ -1,7 +1,6 @@
 import 'package:book_a_doctor/core/helpers/extensions.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/networking/api_error_handler.dart';
 import '../../../core/networking/api_result.dart';
 import '../data/models/specializations_response_model.dart';
 import '../data/repos/home_repo.dart';
@@ -32,8 +31,8 @@ class HomeCubit extends Cubit<HomeState> {
         );
         break;
 
-      case Failure(errorHandler: final errorHandler):
-        emit(HomeState.specializationsError(errorHandler));
+      case Failure(apiErrorModel: final apiErrorModel):
+        emit(HomeState.specializationsError(apiErrorModel));
         break;
     }
   }
@@ -46,7 +45,7 @@ class HomeCubit extends Cubit<HomeState> {
     if (!doctorsList.isNullOrEmpty()) {
       emit(HomeState.doctorsSuccess(doctorsList));
     } else {
-      emit(HomeState.doctorsError(ErrorHandler.handle('No doctors found')));
+      emit(HomeState.doctorsError());
     }
   }
 
