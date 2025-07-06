@@ -1,13 +1,15 @@
 import 'package:book_a_doctor/core/di/dependency_injection.dart';
 import 'package:book_a_doctor/core/routing/routes.dart';
-import 'package:book_a_doctor/features/home/logic/home_cubit.dart';
 import 'package:book_a_doctor/features/login/logic/cubit/login_cubit.dart';
 import 'package:book_a_doctor/features/login/ui/login_screen.dart';
 import 'package:book_a_doctor/features/onboarding/onboarding_screen.dart';
+import 'package:book_a_doctor/features/search/ui/custom_search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../features/home/ui/home_screen.dart';
+import '../../features/home/logic/home_cubit.dart';
+import '../../features/layout/bloc/bottom_navigation_bar_cubit.dart';
+import '../../features/layout/layout_screen.dart';
 import '../../features/sign_up/logic/sign_up_cubit.dart';
 import '../../features/sign_up/ui/sign_up_screen.dart';
 
@@ -35,14 +37,24 @@ class AppRouter {
                 child: const SignupScreen(),
               ),
         );
-      case Routes.homeScreen:
+      case Routes.layoutScreen:
         return MaterialPageRoute(
           builder:
-              (_) => BlocProvider(
-                create: (context) => HomeCubit(getIt())..getSpecializations(),
-                child: const HomeScreen(),
+              (_) => MultiBlocProvider(
+                providers: [
+                  BlocProvider<BottomNavigationBarCubit>(
+                    create: (context) => BottomNavigationBarCubit(),
+                  ),
+                  BlocProvider<HomeCubit>(
+                    create:
+                        (context) => HomeCubit(getIt())..getSpecializations(),
+                  ),
+                ],
+                child: LayoutScreen(),
               ),
         );
+      case Routes.customSearch:
+        return MaterialPageRoute(builder: (_) => const CustomSearch());
       default:
         return null;
     }

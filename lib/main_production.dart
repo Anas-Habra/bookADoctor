@@ -12,6 +12,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setupGetIt();
   await ScreenUtil.ensureScreenSize();
+  await checkIfFirstOpen();
   await checkIfLoggedInUser();
   runApp(DocApp(appRouter: AppRouter()));
 }
@@ -24,5 +25,15 @@ checkIfLoggedInUser() async {
     isLoggedInUser = true;
   } else {
     isLoggedInUser = false;
+  }
+}
+
+Future<void> checkIfFirstOpen() async {
+  final alreadyLaunched = await SharedPrefHelper.getBool('alreadyLaunched');
+  if (alreadyLaunched == true) {
+    isFirstOpen = false;
+  } else {
+    isFirstOpen = true;
+    await SharedPrefHelper.setData('alreadyLaunched', true);
   }
 }
