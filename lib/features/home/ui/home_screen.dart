@@ -12,25 +12,22 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Container(
-          width: double.infinity,
-          margin: const EdgeInsets.fromLTRB(20, 16, 20, 28),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const HomeTopBar(),
-              const DoctorsBlueContainer(),
-              verticalSpace(24),
-              const DoctorsSpecialitySeeAll(),
-              verticalSpace(18),
-              const SpecializationsBlocBuilder(),
-              verticalSpace(8),
-              const DoctorsBlocBuilder(),
-            ],
-          ),
+    return SafeArea(
+      child: Container(
+        width: double.infinity,
+        margin: const EdgeInsets.fromLTRB(20, 16, 20, 28),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const HomeTopBar(),
+            const DoctorsBlueContainer(),
+            verticalSpace(24),
+            const DoctorsSpecialitySeeAll(),
+            verticalSpace(18),
+            const SpecializationsBlocBuilder(),
+            verticalSpace(8),
+            const DoctorsBlocBuilder(),
+          ],
         ),
       ),
     );
