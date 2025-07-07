@@ -1,7 +1,10 @@
+import 'package:book_a_doctor/core/helpers/extensions.dart';
 import 'package:book_a_doctor/core/helpers/spacing.dart';
 import 'package:book_a_doctor/core/theming/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../core/routing/routes.dart';
 
 class DoctorsBlueContainer extends StatelessWidget {
   const DoctorsBlueContainer({super.key});
@@ -34,7 +37,9 @@ class DoctorsBlueContainer extends StatelessWidget {
                 verticalSpace(16),
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.pushNamed(Routes.mapFindNearbyScreen);
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
