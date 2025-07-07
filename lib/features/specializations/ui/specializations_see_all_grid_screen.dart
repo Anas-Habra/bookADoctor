@@ -3,15 +3,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/widgets/custom_app_bar.dart';
 
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+class SpecializationsSeeAllGridScreen extends StatelessWidget {
+  const SpecializationsSeeAllGridScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.only(top: 60.h, right: 16.w, left: 16.w),
-        child: Column(children: [CustomAppBar(title: "Profile")]),
+        child: Column(children: [CustomAppBar(title: "Doctor Speciality")]),
       ),
     );
   }

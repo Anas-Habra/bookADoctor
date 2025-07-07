@@ -19,8 +19,8 @@ class LayoutScreen extends StatelessWidget {
 
   final List<Widget> pages = [
     HomeScreen(),
-    BookAppointmentScreen(),
     ChatScreen(),
+    BookAppointmentScreen(),
     ProfileScreen(),
   ];
 
@@ -42,7 +42,7 @@ class LayoutScreen extends StatelessWidget {
               ),
               backgroundColor: ColorsManager.mainBlue,
               onPressed: () {
-                context.pushNamed(Routes.customSearch);
+                context.pushNamed(Routes.searchScreen);
               },
               tooltip: "Search",
               child: SvgPicture.asset(
@@ -55,11 +55,20 @@ class LayoutScreen extends StatelessWidget {
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerDocked,
           body: IndexedStack(index: state.pageIndex, children: pages),
-          bottomNavigationBar: SizedBox(
+          bottomNavigationBar: Container(
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: const Color(0x08000000),
+                  offset: const Offset(0, -1),
+                  blurRadius: 2,
+                ),
+              ],
+            ),
             height: 80.h,
             child: BottomNavigationBar(
+              backgroundColor: Colors.white,
               currentIndex: state.pageIndex,
-              elevation: 10,
               type: BottomNavigationBarType.fixed,
               onTap: (index) {
                 if (index == 2) return;

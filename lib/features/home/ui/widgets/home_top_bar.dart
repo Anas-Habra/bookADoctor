@@ -1,8 +1,10 @@
+import 'package:book_a_doctor/core/helpers/extensions.dart';
 import 'package:book_a_doctor/core/theming/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/styles.dart';
 
 class HomeTopBar extends StatelessWidget {
@@ -20,10 +22,15 @@ class HomeTopBar extends StatelessWidget {
           ],
         ),
         const Spacer(),
-        CircleAvatar(
-          radius: 24.r,
-          backgroundColor: ColorsManager.moreLighterGray,
-          child: SvgPicture.asset("assets/svgs/notifications.svg"),
+        InkWell(
+          onTap: () {
+            context.pushNamed(Routes.notificationsScreen);
+          },
+          child: CircleAvatar(
+            radius: 24.r,
+            backgroundColor: ColorsManager.moreLighterGray,
+            child: SvgPicture.asset("assets/svgs/notifications.svg"),
+          ),
         ),
       ],
     );
