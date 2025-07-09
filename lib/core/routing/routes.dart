@@ -8,5 +8,7 @@ class Routes {
   static const String mapFindNearbyScreen = "/mapFindNearbyScreen";
   static const String specializationsSeeAllGridScreen =
       "/specializationsSeeAllGridScreen";
+  static const String doctorsBySpecialtyListScreen =
+      "/doctorsBySpecialtyListScreen";
   static const String doctorDetailsScreen = "/doctorDetailsScreen";
 }
