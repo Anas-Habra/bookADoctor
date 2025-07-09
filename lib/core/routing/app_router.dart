@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../features/doctor_details/ui/doctor_details_screen.dart';
+import '../../features/doctors_by_specialty/ui/doctors_by_specialty_list_screen.dart';
+import '../../features/home/data/models/specializations_response_model.dart';
 import '../../features/home/logic/home_cubit.dart';
 import '../../features/layout/bloc/bottom_navigation_bar_cubit.dart';
 import '../../features/layout/layout_screen.dart';
@@ -64,8 +66,29 @@ class AppRouter {
       case Routes.mapFindNearbyScreen:
         return MaterialPageRoute(builder: (_) => const MapFindNearbyScreen());
       case Routes.specializationsSeeAllGridScreen:
+        if (arguments is List<SpecializationsData>) {
+          return MaterialPageRoute(
+            builder:
+                (_) => SpecializationsSeeAllGridScreen(
+                  specializationsDataList: arguments,
+                ),
+          );
+        }
         return MaterialPageRoute(
-          builder: (_) => const SpecializationsSeeAllGridScreen(),
+          builder:
+              (_) => const SpecializationsSeeAllGridScreen(
+                specializationsDataList: [],
+              ),
+        );
+      case Routes.doctorsBySpecialtyListScreen:
+        if (arguments is List<Doctors>) {
+          return MaterialPageRoute(
+            builder:
+                (_) => DoctorsBySpecialtyListScreen(doctorsList: arguments),
+          );
+        }
+        return MaterialPageRoute(
+          builder: (_) => const DoctorsBySpecialtyListScreen(doctorsList: []),
         );
       case Routes.doctorDetailsScreen:
         return MaterialPageRoute(builder: (_) => const DoctorDetailsScreen());
