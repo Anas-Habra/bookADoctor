@@ -34,7 +34,7 @@ class LoginBlocListener extends StatelessWidget {
             );
 
             break;
-          case LoginSuccess(data: final loginResponse):
+          case LoginSuccess(data: _):
             context.pop();
             context.pushNamed(Routes.layoutScreen);
             break;
@@ -55,17 +55,34 @@ class LoginBlocListener extends StatelessWidget {
       context: context,
       builder:
           (context) => AlertDialog(
-            icon: const Icon(Icons.error, color: Colors.red, size: 32),
-            content: Text(
-              apiErrorModel.getAllErrorMessages(),
-              style: TextStyles.font15DarkBlueMedium,
+            backgroundColor: Colors.white,
+            icon: const Icon(Icons.error, color: Colors.red, size: 40),
+            title: Text('Oops!', style: TextStyles.font18DarkBlueSemiBold),
+            content: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: Text(
+                apiErrorModel.getAllErrorMessages(),
+                style: TextStyles.font15DarkBlueMedium,
+                textAlign: TextAlign.center,
+              ),
             ),
+            actionsAlignment: MainAxisAlignment.center,
+            actionsPadding: const EdgeInsets.only(bottom: 12),
             actions: [
               TextButton(
-                onPressed: () {
-                  context.pop();
-                },
-                child: Text("Got it", style: TextStyles.font14BlueSemiBold),
+                style: TextButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  backgroundColor: Colors.blue,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 12,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+                onPressed: () => context.pop(),
+                child: Text("Got it", style: TextStyles.font16WhiteSemiBold),
               ),
             ],
           ),
